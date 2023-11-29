@@ -13,4 +13,10 @@ import com.example.taskt.domain.Todo
 class TodoController(@Autowired private val todoRepo: TodoRepository) {
   @GetMapping("")
   fun getAllTodos(): List<Todo> = todoRepo.findAll().toList()
+
+  @PostMapping("")
+  fun insertTodo(@RequestBody todo: Todo): ResponseEntity<Todo> {
+    val insertedTodo = todoRepo.save(todo)
+    return ResponseEntity(insertedTodo, HttpStatus.CREATED)
+  }
 }
