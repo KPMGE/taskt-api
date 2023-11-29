@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  api:
+    build: .
+    container_name: taskt_api
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/$POSTGRES_DB
+      DB_USER: $POSTGRES_USER
+      DB_PASSWORD: $POSTGRES_PASSWORD
+    ports:
+      - 8080:8080
+
+  db:
+    image: postgres:14
+    container_name: taskt_db
+    environment:
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: $POSTGRES_DB
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data: 
