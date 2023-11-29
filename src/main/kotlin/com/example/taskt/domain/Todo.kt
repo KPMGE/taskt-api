@@ -1,11 +1,9 @@
+package com.example.taskt.domain
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Column
-import org.springframework.data.annotation.Id
+import jakarta.persistence.*
 
 @Entity
+@Table(name = "todos")
 data class Todo (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
